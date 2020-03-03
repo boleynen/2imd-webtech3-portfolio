@@ -1,0 +1,57 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+.container{
+    background-color: rgb(250, 244, 234);
+}
+h1, h2, p{
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+p:last-of-type{
+    text-transform: unset;
+}
+#headings{
+    background-color: black;
+    height: 100px;
+    width: 100%;
+}
+h1, h2{
+    color: white;
+    text-align: center
+}
+h1{
+    letter-spacing: 10px;
+    padding-top: 20px;
+}
+h2{
+    font-size: 0.9em;
+    font-weight: lighter;
+    letter-spacing: 4px;
+}
+#qr-wrapper{
+    width: 100%;
+}
+#qr-wrapper img{
+    margin: 60px auto;
+    display: block;
+    
+}
+#frustrated{
+    display: none;
+}
+#info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#info p{
+    border: 1px solid black;
+    text-align: center;
+    padding: 6px;
+}
+#price{
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
