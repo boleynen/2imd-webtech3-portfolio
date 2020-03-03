@@ -25,6 +25,11 @@ p{
 div{
     padding: 1em;
 }
+.broken, .infinity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @media(min-width: 500px){
     .wrapper{
