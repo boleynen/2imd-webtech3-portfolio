@@ -36,7 +36,6 @@ h2{
 #qr-wrapper img{
     margin: 60px auto;
     display: block;
-    
 }
 #frustrated{
     display: none;
@@ -48,10 +47,73 @@ h2{
 #info p{
     border: 1px solid black;
     text-align: center;
-    padding: 6px;
+    padding: 12px;
 }
 #price{
     grid-row-start: 2;
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 5;
+}
+
+@media(min-width: 800px){
+    #frustrated{
+        display: block;
+        grid-row-start: 3;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        height: 40px;
+    }
+    #date, #amount, #price{
+        height: 60px;
+    }
+    .container{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr;
+        padding: 10px;
+    }
+    #qr-wrapper{
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        padding: 30px;
+        border: 1px solid black;
+    }
+    #qr-wrapper img{
+        margin: 0 auto;
+        width: 180px;
+    }
+    #headings{
+        background-color: transparent;
+        display: flex;
+        border: 1px solid black;
+        height: 100%;
+        
+    }
+    h1, h2{
+        color: black;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+    }
+    h1{
+        height: 70%;
+        font-size: 4em;
+        
+    }
+    #info{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    #info p{
+        border: 1px solid black;
+        text-align: center;
+        padding: 6px;
+    }
+    #price{
+        grid-row-start: 1;
+        grid-column-start: 3;
+    }
+
 }
