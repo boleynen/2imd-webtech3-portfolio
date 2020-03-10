@@ -67,11 +67,16 @@ class App {
     let note = new Note(text);
     note.add();
     // note.saveToStorage();
-    // this.reset();
+    this.reset();
   }
   
   reset(){
     // this function should reset the form 
+    let inputVal = document.querySelector("#txtAddNote");
+    let btn = document.querySelector("#btnAddNote");
+    btn.addEventListener("click", function(){
+      inputVal.value=""});
+
   }
   
 }
