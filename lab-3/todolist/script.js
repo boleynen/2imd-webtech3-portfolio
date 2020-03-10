@@ -19,6 +19,8 @@ class Note {
     newNote.appendChild(newA);                    
 
      // newA.addEventListener('click', this.remove.bind(newNote));
+
+     console.log(localStorage);
     
     return newNote;
   }
@@ -33,11 +35,15 @@ class Note {
     // HINT🤩
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
+    
   }
   
   remove(){
     // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
     // in this function, 'this' will refer to the current note element
+    removeBtn = document.querySelector(".card-remove");
+    removeBtn.addEventListener("click", console.log(this));
+    
   } 
 }
 
@@ -72,10 +78,7 @@ class App {
   
   reset(){
     // this function should reset the form 
-    let inputVal = document.querySelector("#txtAddNote");
-    let btn = document.querySelector("#btnAddNote");
-    btn.addEventListener("click", function(){
-      inputVal.value=""});
+    document.querySelector("#txtAddNote").value="";
 
   }
   
