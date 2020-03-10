@@ -11,9 +11,14 @@ class Note {
     let newP = document.createElement("p");       // <p>Todo</p>
     newP.innerHTML = title;
 
-    newNote.appendChild(newP);                    // <div class="card"><p>Todo</p></div>
+    let newA = document.createElement("a");
+    newA.innerHTML = "Remove";
+    newA.setAttribute("class", "card-remove");
 
-    // HINT🤩 a.addEventListener('click', this.remove.bind(newNote));
+    newNote.appendChild(newP);                    // <div class="card"><p>Todo</p></div>
+    newNote.appendChild(newA);                    
+
+     // newA.addEventListener('click', this.remove.bind(newNote));
     
     return newNote;
   }
@@ -44,7 +49,6 @@ class App {
     // clicking the button should work
     // pressing the enter key should also work
     this.btnAdd = document.querySelector("#btnAddNote");
-    // this.btnAdd = ???
     this.btnAdd.addEventListener("click", this.createNote.bind(this));
     // this.loadNotesFromStorage();
   }
