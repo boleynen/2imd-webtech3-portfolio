@@ -47,8 +47,25 @@ class Note {
   remove(){
     // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
     // in this function, 'this' will refer to the current note element
-    removeBtn = document.querySelector(".card-remove");
+    let removeBtn = document.querySelector(".card-remove");
     removeBtn.addEventListener("click", console.log(this));
+    this.addEventListener("click", function(){
+      // haalt array op van bewaarde notes
+      let array = JSON.parse(localStorage.getItem(`local`));
+
+      // haalt title van note op
+      let title = this.querySelector(`p`).innerHTML;
+
+      // maakt variabele van gevonden deel in array
+      let key = array.indexOf(title);
+
+      // verwijderd deel van array
+      array.splice(key, 1);
+
+      localStorage.setItem(`local`, JSON.stringify(array));
+      this.remove();
+    });
+    
     
     
   } 
@@ -57,7 +74,6 @@ class Note {
 class App {
   constructor() {
     // console.log("👊🏼 The Constructor!");
-  
     // HINT🤩
     // clicking the button should work
     // pressing the enter key should also work
@@ -71,7 +87,10 @@ class App {
     // load all notes from storage here and add them to the screen
     // something like note.add() in a loop would be nice
     let data = JSON.parse(localStorage.getItem(`local`));
+
+    // als storage iets bevat...
     if(data.length > 0) {
+      // zoek data in local storage en voeg aan nieuwe note toe
       data.forEach(title => {let note = new Note(title); note.add();});
     }
   }
