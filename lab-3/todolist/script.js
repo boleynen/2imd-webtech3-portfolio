@@ -18,9 +18,7 @@ class Note {
     newNote.appendChild(newP);                    // <div class="card"><p>Todo</p></div>
     newNote.appendChild(newA);                    
 
-     // newA.addEventListener('click', this.remove.bind(newNote));
-
-     console.log(localStorage);
+    newA.addEventListener('click', this.remove.bind(newNote));
     
     return newNote;
   }
@@ -52,6 +50,7 @@ class Note {
     removeBtn = document.querySelector(".card-remove");
     removeBtn.addEventListener("click", console.log(this));
     
+    
   } 
 }
 
@@ -64,20 +63,23 @@ class App {
     // pressing the enter key should also work
     this.btnAdd = document.querySelector("#btnAddNote");
     this.btnAdd.addEventListener("click", this.createNote.bind(this));
-    // this.loadNotesFromStorage();
+    this.loadNotesFromStorage();
   }
   
   loadNotesFromStorage() {
     // HINT🤩
     // load all notes from storage here and add them to the screen
     // something like note.add() in a loop would be nice
+    let data = JSON.parse(localStorage.getItem(`local`));
+    if(data.length > 0) {
+      data.forEach(title => {let note = new Note(title); note.add();});
+    }
   }
    
   createNote(e){
     // this function should create a new note by using the Note() class
     // HINT🤩
     let text = document.querySelector("#txtAddNote").value;
-
     let note = new Note(text);
     note.add();
     note.saveToStorage();
