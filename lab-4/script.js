@@ -43,6 +43,19 @@ class App{
     noLocation(){
       console.log('error')
     }
+
+    getWeather(){
+      let url = `https://api.darksky.net/forecast/befdca694f1063bb1ae93f5046e7abd5/` + this.latitude + `,` + this.longitude;
+      // console.log(url);
+      fetch(url)
+          .then(response => {
+             return response.json();
+          }).then(data => {
+              document.querySelector(".h1").innerHTML = data.currently.summary;
+          }) .catch(error=>{
+              console.log(error);
+          })
+    }
   
   }
   
