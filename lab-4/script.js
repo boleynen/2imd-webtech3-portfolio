@@ -49,8 +49,8 @@ class App {
   }
 
   getDrink() {
-    let degrees = document.querySelector("#degrees").innerText;
-    // let degrees = 25;
+     let degrees = document.querySelector("#degrees").innerText;
+     // let degrees = 25;
     if (degrees >= 20) {
 
       fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
