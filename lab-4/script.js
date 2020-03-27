@@ -1,58 +1,95 @@
-class App{
-  constructor(){
+class App {
+  constructor() {
     this.getLocation();
     this.lat;
     this.lng;
   }
 
-  getLocation(){
+  getLocation() {
     navigator.geolocation.getCurrentPosition(
-      this.gotLocation.bind(this), 
+      this.gotLocation.bind(this),
       this.noLocation.bind(this)
     );
   }
 
-  gotLocation(result){
+  gotLocation(result) {
     this.lat = result.coords.latitude;
     this.lng = result.coords.longitude;
     this.getWeather();
     this.getDrink();
   }
 
-  getWeather(){
-    let url =  `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/8dfa886df75136ffadb934898c0769ba/${this.lat},${this.lng}?units=si`;
+  getWeather() {
+    let temperature = localStorage.getItem("temperature");
+    setTimeout(() => {
+      localStorage.removeItem("temperature");
+    }, 1000 * 60 * 60);
+    if (temperature == null || temperature == "null") {
 
-    fetch(url)
-      .then(response => {
-        return response.json();
+      let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/8dfa886df75136ffadb934898c0769ba/${this.lat},${this.lng}?units=si`;
 
-      }).then(data => {
-        console.log("data = ",data);
-        document.querySelector("#weather").innerHTML = "It's "+ data.currently.summary +" throughout the day!";
+      fetch(url)
+        .then(response => {
+          return response.json();
 
-      }).catch(err => {
-        console.log("error = ",err);
-      });
+        }).then(data => {
+          temperature = localStorage.setItem("temperature", (data.currently.temperature));
+          console.log("weather data = ", data);
+          document.querySelector("#degrees").innerHTML = "It's " + data.currently.temperature + "&#176; today!";
+
+        }).catch(err => {
+          console.log("error = ", err);
+        });
+
+    } else {
+      console.log("data from storage");
+      console.log(localStorage);
+      document.querySelector("#degrees").innerHTML = "It's " + localStorage.getItem("temperature") + "&#176; today!";
+    }
   }
 
-  getDrink(){
-    
-    fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
-    .then(response => {
-      console.log(response);
-      return response.json();
-    })
-    .then(data =>{
-      console.log(data);
-      console.log(data.drinks[0].strDrink);
-      document.querySelector("#drink").innerHTML = "Grab a "+data.drinks[0].strDrink+ " quickly!"
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  getDrink() {
+    let degrees = document.querySelector("#degrees").innerText;
+
+    if (degrees >= 20) {
+
+      fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
+        .then(response => {
+          // console.log(response);
+          return response.json();
+        })
+        .then(data => {
+          // console.log(data);
+          // console.log(data.drinks[0].strDrink);
+          console.log("too hot!");
+          document.querySelector("#drink").innerHTML = "It's too hot ! Cool off with a nice " + data.drinks[4].strDrink + "!";
+
+        })
+        .catch(err => {
+          console.log(err);
+        })
+
+    } else {
+      
+      fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
+        .then(response => {
+          // console.log(response);
+          return response.json();
+        })
+        .then(data => {
+          // console.log(data);
+          // console.log(data.drinks[0].strDrink);
+          console.log("too cold!");
+          document.querySelector("#drink").innerHTML = "Its kinda cold outside. Grab a " + data.drinks[1].strDrink + " quickly!";
+
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
   }
 
-  noLocation(err){
+  noLocation(err) {
     console.log(err);
   }
 }
