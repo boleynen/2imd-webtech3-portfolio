@@ -1,6 +1,57 @@
-.container{
-    width: 300px;
-    height: 600px;
+
+/* 
+   
+
+    font-family: 'Amiri', serif;
+
+    font-family: 'Amatic SC', cursive;
+
+
+ */
+
+
+#container{
+    width: 336px;
+    height: 280px;
     background-color: grey;
     margin: 100px auto;
+}
+#opacity{
+    background-color: hsla(0, 0%, 0%, 0.394);
+    height: 280px;
+}
+.strawberry{
+    background-image: url(https://www.dolfijngo.com/wp-content/uploads/2020/01/DolfijnGO-blue-curacao-cocktail.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 160%;
+}
+.blue{
+    background-image: url(https://ramshacklepantry.com/wp-content/uploads/2018/07/good_DSC_0412.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
+}
+.strawberryH1{
+    font-family: 'Amatic SC', cursive;
+    font-size: 2.8em;
+    color: rgb(238, 0, 71);
+    text-align: center;
+    padding-top: 10px;
+    text-shadow: -1px 2px rgb(111, 0, 33);
+}
+.blueH1{
+    font-family: 'Amatic SC', cursive;
+    font-size: 2.8em;
+    color: rgb(126, 154, 255);
+    text-align: center;
+    padding-top: 10px;
+    text-shadow: -1px 2px rgb(9, 36, 137);
+}
+#drink{
+    font-family: sans-serif;
+    color: white;
+    padding: 20px;
+    line-height: 23px;
+    padding-top: 40px;
 }

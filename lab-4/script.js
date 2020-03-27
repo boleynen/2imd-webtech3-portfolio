@@ -50,7 +50,7 @@ class App {
 
   getDrink() {
     let degrees = document.querySelector("#degrees").innerText;
-
+    // let degrees = 25;
     if (degrees >= 20) {
 
       fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
@@ -62,7 +62,9 @@ class App {
           // console.log(data);
           // console.log(data.drinks[0].strDrink);
           console.log("too hot!");
-          document.querySelector("#drink").innerHTML = "It's too hot ! Cool off with a nice " + data.drinks[4].strDrink + "!";
+          document.querySelector("#drink").innerHTML = "It's too hot ! Cool off with an ice cold " + data.drinks[1].strDrink + "!";
+          document.querySelector("#container").setAttribute("class", "strawberry");
+          document.querySelector("#weather").setAttribute("class", "strawberryH1");
 
         })
         .catch(err => {
@@ -80,7 +82,9 @@ class App {
           // console.log(data);
           // console.log(data.drinks[0].strDrink);
           console.log("too cold!");
-          document.querySelector("#drink").innerHTML = "Its kinda cold outside. Grab a " + data.drinks[1].strDrink + " quickly!";
+          document.querySelector("#drink").innerHTML = "Brr, it's kinda cold outside.. But you decide when summer starts, with a sweet " + data.drinks[4].strDrink + " in your hands.";
+          document.querySelector("#container").setAttribute('class', "blue");
+          document.querySelector("#weather").setAttribute("class", "blueH1");
 
         })
         .catch(err => {
