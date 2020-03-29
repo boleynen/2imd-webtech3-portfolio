@@ -1,31 +1,21 @@
 const express = require('express');
 const router = express.Router();
-
+const messagesController = require('../../../controllers/api/v1/messages.js');
 
 // GET:     /api/v1/messages - geeft messages terug
-router.get('/', (req, res) =>{
-    res.send("get messages");
-})
+router.get('/', messagesController.getAll);
 
 // GET:     /api/v1/messages/:id - geeft message met specifiek ID terug
-router.get('/:id', (req, res) =>{
-    res.send("get message " + req.params.id);
-})
+router.get('/:id', messagesController.getOne)
 
 // POST:    /api/v1/messages - kan een JSON-object ontvangen en bewaren en geeft het nieuwe document terug
-router.post('/', (req, res) =>{
-    res.send("post messages");
-})
+router.post('/', messagesController.postAll)
 
 // PUT:     /api/v1/messages/:id - kan een JSON-object ontvangen en een specifiek bericht updaten en geeft die nieuwe bericht terug
-router.put('/:id', (req, res) =>{
-    res.send("Update message " + res.params.id);
-})
+router.put('/:id', messagesController.update)
 
 // DELETE:  /api/v1/messages/:id - kan een message met id verwijderen en geeft een response terug
-router.delete('/:id', (req, res) =>{
-    res.send("Delete message " + req.params.id);
-})
+router.delete('/:id', messagesController.remove)
 
 // GET:     /api/v1/messages?user=username - kan berichten teruggeven voor een bepaalde username
 // router.get('/api/v1/messages?user=:username', (req, res) =>{
