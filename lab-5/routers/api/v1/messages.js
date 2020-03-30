@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const messagesController = require('../../../controllers/api/v1/messages.js');
+const messagesController = require('../../../controllers/api/v1/messages');
 
 // GET:     /api/v1/messages - geeft messages terug
 router.get('/', messagesController.getAll);
@@ -18,7 +18,7 @@ router.put('/:id', messagesController.update);
 router.delete('/:id', messagesController.remove);
 
 // GET:     /api/v1/messages?user=username - kan berichten teruggeven voor een bepaalde username
-router.get("/?user=:username", messagesController.getAllUser);
+//  router.get("/?user=:username", messagesController.getAllUser);
 
 
 module.exports = router;

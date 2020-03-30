@@ -9,7 +9,9 @@ const usersRouter = require('./routes/users');
 const apiRouter = require('./routers/api/v1/messages.js');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://boleynen:boleynen@cluster0-gupod.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true}, () => {
+  console.log('connected to DB');
+});
 
 
 var app = express();
@@ -45,3 +47,8 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+
+
+
+
