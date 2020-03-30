@@ -15,6 +15,11 @@ const getAll = (req, res) => {
                 "status": "success",
                 "message": docs
             })
+        }else if(err){
+            res.json({
+                "status": "error",
+                "message": "could not save this item"
+            })
         }
     })
     
@@ -23,10 +28,17 @@ const getAll = (req, res) => {
 // GET:     /api/v1/messages/:id - geeft message met specifiek ID terug
 const getOne = (req, res) => {
     Message.find({_id: req.params.id}, (err, docs) => {
-        res.json({
-            "status": "success",
-            "message": docs
-        })
+        if(!err){
+            res.json({
+                "status": "success",
+                "message": docs
+            })
+        }else if(err){
+            res.json({
+                "status": "error",
+                "message": "could not get ID"
+            })
+        }
     }) 
 }
 
@@ -40,6 +52,11 @@ const postAll =  (req, res) => {
             res.json({
                 "status": "success",
                 "message": doc
+            })
+        }else if(err){
+            res.json({
+                "status": "error",
+                "message": "could not save this item"
             })
         }
     } )
@@ -56,6 +73,11 @@ const update = (req, res) => {
                 "status": "success",
                 "message": update
             })
+        }else if(err){
+            res.json({
+                "status": "error",
+                "message": "could not update this item"
+            })
         }
     })
 }
@@ -63,10 +85,17 @@ const update = (req, res) => {
 // DELETE:  /api/v1/messages/:id - kan een message met id verwijderen en geeft een response terug
 const remove = (req, res) => {
     Message.findByIdAndDelete({_id: req.params.id}, (err, docs) => {
-        res.json({
-            "status": "success",
-            "message": "REMOVING message with id " + req.params.id
-        })
+        if(!err){
+            res.json({
+                "status": "success",
+                "message": "REMOVING message with id " + req.params.id
+            })
+        }else if(err){
+            res.json({
+                "status": "error",
+                "message": "could not remove this item"
+            })
+        }
     })
 }
 
@@ -74,10 +103,17 @@ const remove = (req, res) => {
 
 const getAllUser = (req, res) => {
     Message.find({user: req.params.user}, (err, docs) => {
-        res.json({
-            "status": "success",
-            "message": docs
-        })
+        if(!err){
+            res.json({
+                "status": "success",
+                "message": docs
+            })
+        }else if(err){
+            res.json({
+                "status": "error",
+                "message": "could not get this user"
+            })
+        }
     })
 }
 
