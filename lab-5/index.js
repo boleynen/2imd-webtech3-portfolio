@@ -11,4 +11,4 @@ const apiV1Messagesrouter = require('./routers/api/v1/messages.js')
 app.get('/', (req, res) => res.send('Hello World!'))
 app.use('/api/v1/messages', apiV1Messagesrouter)
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(process.env.PORT || port, () => console.log(`Example app listening on port ${port}!`))
