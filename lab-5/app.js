@@ -9,7 +9,7 @@ const usersRouter = require('./routes/users');
 const apiRouter = require('./routers/api/v1/messages.js');
 
 const mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://boleynen:boleynen@cluster0-gupod.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true}, () => {
+mongoose.connect(process.env.dbconn ||"mongodb+srv://boleynen:boleynen@cluster0-gupod.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true}, () => {
   console.log('connected to DB');
 });
 
