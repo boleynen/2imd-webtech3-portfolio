@@ -15,10 +15,10 @@
     "jade": "~1.11.0",
     "mongoose": "^5.9.6",
     "morgan": "~1.9.1",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "nodemon": "^2.0.2"
   },
   "devDependencies": {
-    "constantinople": "^4.0.1",
-    "nodemon": "^2.0.2"
+    "constantinople": "^4.0.1"
   }
 }
