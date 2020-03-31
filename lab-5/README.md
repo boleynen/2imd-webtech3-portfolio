@@ -1,1 +1,1 @@
-[Link to codepen: ](https://codepen.io/BoLeynen/pen/xxGBVgY)
+[Link to codepen](https://codepen.io/BoLeynen/pen/xxGBVgY)
