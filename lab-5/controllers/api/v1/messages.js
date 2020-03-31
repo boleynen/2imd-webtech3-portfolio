@@ -71,7 +71,7 @@ const update = (req, res) => {
         if(!err) {
             res.json({
                 "status": "success",
-                "message": update
+                "message": update + "with id " + req.params.id
             })
         }else if(err){
             res.json({
